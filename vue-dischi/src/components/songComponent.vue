@@ -21,6 +21,7 @@ console.log(Object);
 
   .song-container{
     width: 100%;
+    height: 150px;
     display: flex;
     flex-direction: column;
   }
