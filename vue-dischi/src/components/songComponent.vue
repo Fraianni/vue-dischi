@@ -24,11 +24,18 @@ console.log(Object);
     height: 150px;
     display: flex;
     flex-direction: column;
+    padding: 10px 0px;
+    background-color: #2e3a46;
   }
 
   img{
     width: 100%;
     height: 100%;
+    margin-bottom: 15px;
+  }
+
+  p{
+    background-color: #2e3a46;
   }
 
 </style>
