@@ -14,7 +14,7 @@ export default {
 <style scoped>
     header{
         height: 15vh;
-        background-color: grey;
+        background-color: #2e3a46;
         display: flex;
         justify-content: start;
         

@@ -28,11 +28,15 @@ export default {
 
 <style scoped>
     main{
-        margin: 20px;
     }
   .songs-container{
     width: calc(100% / 5 - 40px);
+    height: 300px;
     display: inline-block;
-    margin: 20px;
+    margin: 50px 20px;
+    padding: 20px;
+  
+    color: white;
+    background-color: #2e3a46;
   }
 </style>

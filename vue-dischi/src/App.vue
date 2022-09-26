@@ -60,6 +60,8 @@ export default {
     box-sizing: border-box;
     padding: 0px;
     margin: 0px;
+    background-color: #1e2d3b;
+
   }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
