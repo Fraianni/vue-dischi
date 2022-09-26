@@ -1,6 +1,6 @@
 <template>
     <main>
-        <div v-for="song in songs " :key="song.title">
+        <div class="songs-container" v-for="song in songs " :key="song.title">
             <songComponent :info="song"/>
         </div>
     </main>
@@ -26,6 +26,13 @@ export default {
 
 </script>
 
-<style>
-
+<style scoped>
+    main{
+        margin: 20px;
+    }
+  .songs-container{
+    width: calc(100% / 5 - 40px);
+    display: inline-block;
+    margin: 20px;
+  }
 </style>

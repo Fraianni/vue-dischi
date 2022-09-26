@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <headerComponent/>
-    <mainComponent/>
+    <LoaderComponent v-if="loading" />
+    <mainComponent :songs="songs" />
   </div>
 </template>
 
@@ -11,14 +12,17 @@ import axios from 'axios';
 
 import headerComponent from './components/headerComponent.vue'
 import mainComponent from './components/mainComponent.vue'
+import loaderComponent from './components/loaderComponent.vue'
+import LoaderComponent from './components/loaderComponent.vue'
 
 
 export default {
   name: 'App',
   components: {
     headerComponent,
-    mainComponent
-    
+    mainComponent,
+    loaderComponent,
+    LoaderComponent
 },
   data() {
     return{
@@ -36,8 +40,8 @@ export default {
       .then(({ status, data }) => {
         this.loading = false;
         if (status === 200) {
-          this.songs = data;
-
+          this.songs = data.response;
+          console.log(this.songs)
         } else {
           this.errorMessage = 'something went wrong...';
         }

@@ -17,6 +17,16 @@ export default {
 console.log(Object);
 </script>
 
-<style>
+<style scoped>
+
+  .song-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  img{
+    width: 100%;
+  }
 
 </style>
