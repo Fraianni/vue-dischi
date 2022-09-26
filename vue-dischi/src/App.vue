@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <header-component/>
+    <headerComponent/>
+    <mainComponent/>
   </div>
 </template>
 
@@ -9,14 +10,16 @@
 import axios from 'axios';
 
 import headerComponent from './components/headerComponent.vue'
+import mainComponent from './components/mainComponent.vue'
 
 
 export default {
   name: 'App',
   components: {
     headerComponent,
+    mainComponent
     
-  },
+},
   data() {
     return{
       apiUrl:'https://flynn.boolean.careers/exercises/api/array/music',
@@ -34,6 +37,7 @@ export default {
         this.loading = false;
         if (status === 200) {
           this.songs = data;
+
         } else {
           this.errorMessage = 'something went wrong...';
         }

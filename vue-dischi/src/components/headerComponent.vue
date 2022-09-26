@@ -20,7 +20,7 @@ export default {
         
     }
     img{
-        width: 4%;
+        width: 50px;
         margin-left: 5px;
         
     }
