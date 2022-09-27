@@ -2,7 +2,7 @@
   <div id="app">
     <headerComponent/>
     <loaderComponent v-if="loading" />
-    <mainComponent :songs="songsToShow" @changedGenre="choiceOption" />
+    <mainComponent v-else  :songs="songs"  />
   </div>
 </template>
 
@@ -29,7 +29,6 @@ export default {
       songs: [],
       errorMessage:'',
       loading:true,
-      option:'',
 
     };
   },
@@ -41,7 +40,6 @@ export default {
         this.loading = false;
         if (status === 200) {
           this.songs = data.response;
-          console.log(this.songs)
         } else {
           this.errorMessage = 'something went wrong...';
         }
@@ -53,24 +51,9 @@ export default {
       });
   },
 
-  methods:{
-    choiceOption(option){
-      this.option=option;
-      console.log(this.option);
-    }
-  },
 
-  computed:{
-      songsToShow(){
-        const array = [];
-        this.songs.forEach((item)=>{
-          if(item.genre.toLowerCase().indexOf(this.option.toLowerCase().trim())>-1){
-            array.push(item);
-          }
-        })
-        return array;
-      }
-  }
+
+ 
 }
 </script>
 

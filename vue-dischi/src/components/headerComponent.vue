@@ -16,7 +16,7 @@ export default {
         height: 15vh;
         background-color: #2e3a46;
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
  
         
     }

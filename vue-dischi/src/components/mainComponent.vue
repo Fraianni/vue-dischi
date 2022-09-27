@@ -1,13 +1,9 @@
 <template>
     <main>
-        <select v-model="selected" @change="$emit('changedGenre', selected)">
-            <option disabled value="">Please select one</option>
-            <option value="rock">Rock</option>
-            <option value="pop">Pop</option>
-            <option value="jazz">Jazz</option>
-            <option value="metal">Metal</option>
-        </select>
-        <div class="songs-container" v-for="song in songs " :key="song.title">
+        <selectComponent :genres="genres" :songs="songs" @changedGenre="choiceOption"/>
+
+       
+        <div class="songs-container" v-for="song in songsToShow " :key="song.title">
             <songComponent :info="song"/>
         </div>
     </main>
@@ -16,27 +12,67 @@
 
 <script>
 import songComponent from './songComponent.vue';
+import selectComponent from './selectComponent.vue'
+
 
 export default {
     name:'mainComponent',
+
+    created(){
+    console.log('created')
+
+     this.songs.forEach((item)=>{
+        console.log('created')
+
+         if(!(this.genres.includes(item.genre))){
+           this.genres.push(item.genre);
+         }
+
+        
+       })
+    
+  },
     
     data(){
         return {
             selected:'',
+            option:'',
+            genres:[],
         };
     },
     
     props:{
-        songs: Array
+        songs: Array,
     },
 
     components:{
         songComponent,
+        selectComponent
+
     },
 
     methods:{
-       
+    choiceOption(option){
+      this.option=option;
+      console.log(this.option);
     },
+  },
+
+  computed:{
+      songsToShow(){
+        const array = [];
+        this.songs.forEach((item)=>{
+          if(item.genre.toLowerCase().indexOf(this.option.toLowerCase().trim())>-1){
+            array.push(item);
+          }
+       
+         
+        })
+        return array;
+      },
+
+      
+  }
 }
 
 
@@ -55,4 +91,6 @@ export default {
     color: white;
     background-color: #2e3a46;
   }
+
+
 </style>
