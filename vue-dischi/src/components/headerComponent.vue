@@ -17,12 +17,14 @@ export default {
         background-color: #2e3a46;
         display: flex;
         justify-content: start;
+ 
         
     }
     img{
         width: 50px;
         margin-left: 5px;
-        
+        background-color: #2e3a46;
+
     }
 
 </style>
