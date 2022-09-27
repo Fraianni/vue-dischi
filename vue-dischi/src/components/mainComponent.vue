@@ -1,6 +1,6 @@
 <template>
     <main>
-        <select v-model="selected" @click="doSelection()">
+        <select v-model="selected" @change="$emit('changedGenre', selected)">
             <option disabled value="">Please select one</option>
             <option value="rock">Rock</option>
             <option value="pop">Pop</option>
@@ -20,6 +20,12 @@ import songComponent from './songComponent.vue';
 export default {
     name:'mainComponent',
     
+    data(){
+        return {
+            selected:'',
+        };
+    },
+    
     props:{
         songs: Array
     },
@@ -29,9 +35,7 @@ export default {
     },
 
     methods:{
-        doSelection(){
-            this.$emit('selection', this.selected);
-        }
+       
     },
 }
 

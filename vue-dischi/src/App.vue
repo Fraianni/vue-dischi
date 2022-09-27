@@ -2,7 +2,7 @@
   <div id="app">
     <headerComponent/>
     <loaderComponent v-if="loading" />
-    <mainComponent :songs="songs" @selection="choiceOption" />
+    <mainComponent :songs="songsToShow" @changedGenre="choiceOption" />
   </div>
 </template>
 
@@ -54,11 +54,23 @@ export default {
   },
 
   methods:{
-    choiceOption(selected){
-      this.option=selected;
+    choiceOption(option){
+      this.option=option;
       console.log(this.option);
     }
   },
+
+  computed:{
+      songsToShow(){
+        const array = [];
+        this.songs.forEach((item)=>{
+          if(item.genre.toLowerCase().indexOf(this.option.toLowerCase().trim())>-1){
+            array.push(item);
+          }
+        })
+        return array;
+      }
+  }
 }
 </script>
 
