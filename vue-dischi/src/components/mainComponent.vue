@@ -1,5 +1,12 @@
 <template>
     <main>
+        <select v-model="selected" @click="doSelection()">
+            <option disabled value="">Please select one</option>
+            <option value="rock">Rock</option>
+            <option value="pop">Pop</option>
+            <option value="jazz">Jazz</option>
+            <option value="metal">Metal</option>
+        </select>
         <div class="songs-container" v-for="song in songs " :key="song.title">
             <songComponent :info="song"/>
         </div>
@@ -19,7 +26,13 @@ export default {
 
     components:{
         songComponent,
-    }
+    },
+
+    methods:{
+        doSelection(){
+            this.$emit('selection', this.selected);
+        }
+    },
 }
 
 
@@ -27,8 +40,7 @@ export default {
 </script>
 
 <style scoped>
-    main{
-    }
+   
   .songs-container{
     width: calc(100% / 5 - 40px);
     height: 300px;

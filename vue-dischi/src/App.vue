@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <headerComponent/>
-    <LoaderComponent v-if="loading" />
-    <mainComponent :songs="songs" />
+    <loaderComponent v-if="loading" />
+    <mainComponent :songs="songs" @selection="choiceOption" />
   </div>
 </template>
 
@@ -13,7 +13,6 @@ import axios from 'axios';
 import headerComponent from './components/headerComponent.vue'
 import mainComponent from './components/mainComponent.vue'
 import loaderComponent from './components/loaderComponent.vue'
-import LoaderComponent from './components/loaderComponent.vue'
 
 
 export default {
@@ -22,7 +21,7 @@ export default {
     headerComponent,
     mainComponent,
     loaderComponent,
-    LoaderComponent
+    
 },
   data() {
     return{
@@ -30,6 +29,7 @@ export default {
       songs: [],
       errorMessage:'',
       loading:true,
+      option:'',
 
     };
   },
@@ -51,6 +51,13 @@ export default {
         this.loading = false;
         this.errorMessage = 'error: ' + error.message;
       });
+  },
+
+  methods:{
+    choiceOption(selected){
+      this.option=selected;
+      console.log(this.option);
+    }
   },
 }
 </script>
