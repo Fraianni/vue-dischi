@@ -64,27 +64,14 @@ export default {
                    
         if(this.option==='none'){
         array=this.songs
-        console.log('ciao');
-           }
+        }
 
 
        
         this.songs.forEach((item)=>{
 
-       
-                
-        //   if(this.option==='none'){
-        //     array=this.songs
-        //     console.log('ciao');
-        //   }
-
-
           if(item.genre.toLowerCase().indexOf(this.option.toLowerCase().trim())>-1)
             array.push(item);
-          
-
-
-         
         
         })
 
@@ -101,6 +88,11 @@ export default {
 </script>
 
 <style scoped>
+
+    main{
+        max-width: 1200px;
+        
+    }
    
   .songs-container{
     width: calc(100% / 5 - 40px);
