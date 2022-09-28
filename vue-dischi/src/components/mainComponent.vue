@@ -1,6 +1,6 @@
 <template>
     <main>
-        <selectComponent :genres="genres" :songs="songs" @changedGenre="choiceOption"/>
+        <selectComponent   :genres="genres" :songs="songs" @changedGenre="choiceOption" @resetButton="choiceOption" />
 
        
         <div class="songs-container" v-for="song in songsToShow " :key="song.title">
@@ -35,7 +35,6 @@ export default {
     
     data(){
         return {
-            selected:'',
             option:'',
             genres:[],
         };
@@ -54,20 +53,42 @@ export default {
     methods:{
     choiceOption(option){
       this.option=option;
-      console.log(this.option);
+      console.log('opzione', this.option);
     },
   },
 
   computed:{
       songsToShow(){
-        const array = [];
-        this.songs.forEach((item)=>{
-          if(item.genre.toLowerCase().indexOf(this.option.toLowerCase().trim())>-1){
-            array.push(item);
-          }
+        let array = [];
+        console.log(this.option,'ciao')
+                   
+        if(this.option==='none'){
+        array=this.songs
+        console.log('ciao');
+           }
+
+
        
+        this.songs.forEach((item)=>{
+
+       
+                
+        //   if(this.option==='none'){
+        //     array=this.songs
+        //     console.log('ciao');
+        //   }
+
+
+          if(item.genre.toLowerCase().indexOf(this.option.toLowerCase().trim())>-1)
+            array.push(item);
+          
+
+
          
+        
         })
+
+        
         return array;
       },
 
